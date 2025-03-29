@@ -2,6 +2,10 @@
 
 A classic Snake game implemented in Python using the curses library. This terminal-based game features colorful graphics, score tracking, and an intuitive interface.
 
+## Demo
+
+![Snake Game Demo](demo/snake-game-demo.gif)
+
 ## Features
 
 - Colorful terminal-based UI
