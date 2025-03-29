@@ -5,9 +5,9 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="terminal-snake-game",
-    version="1.0.1",
+    version="1.0.2",
     author="Sweta Tanwar",
-    author_email="sweta.tanwar@gmail.com",
+    author_email="shweta_tanwar@ymail.com",
     description="A terminal-based Snake game with colorful UI and high score tracking",
     long_description=long_description,
     long_description_content_type="text/markdown",
