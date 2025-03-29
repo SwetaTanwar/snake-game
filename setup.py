@@ -5,10 +5,10 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="terminal-snake-game",
-    version="1.0.0",
+    version="1.0.1",
     author="Sweta Tanwar",
-    author_email="shweta_tanwar@ymail.com",
-    description="A colorful terminal-based Snake game with score tracking",
+    author_email="sweta.tanwar@gmail.com",
+    description="A terminal-based Snake game with colorful UI and high score tracking",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/SwetaTanwar/snake-game",
@@ -27,4 +27,8 @@ setup(
         ],
     },
     py_modules=["snake_game"],
+    install_requires=[
+        "windows-curses;platform_system=='Windows'"
+    ],
+    include_package_data=True,
 ) 

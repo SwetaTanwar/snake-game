@@ -323,6 +323,15 @@ def main():
         # Get screen dimensions
         sh, sw = screen.getmaxyx()
         
+        # Check if terminal is too small
+        min_height = 24
+        min_width = 80
+        if sh < min_height or sw < min_width:
+            curses.endwin()
+            print(f"Terminal too small. Minimum size required: {min_width}x{min_height}")
+            print(f"Current terminal size: {sw}x{sh}")
+            return
+        
         # Create windows for different parts of the game
         score_height = 3
         control_height = 3
@@ -332,6 +341,9 @@ def main():
         score_window = curses.newwin(score_height, sw, 0, 0)
         game_window = curses.newwin(game_height, sw, score_height, 0)
         control_window = curses.newwin(control_height, sw, sh-control_height, 0)
+        
+        if not all([score_window, game_window, control_window]):
+            raise curses.error("Failed to create windows")
         
         game_window.keypad(1)
         
