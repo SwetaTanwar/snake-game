@@ -16,35 +16,53 @@ A classic Snake game implemented in Python using the curses library. This termin
 
 ## Requirements
 
-- Python 3.x (Python 2 is not supported)
+- Python 3.6 or higher
 - curses library (included in standard Python distribution)
 
-## Installation
+## Installation & Running
 
-Clone the repository:
-```bash
-git clone git@github.com:SwetaTanwar/snake-game.git
-cd snake-game
-```
+There are two ways to install and run the game:
 
-Make the game executable (optional):
-```bash
-chmod +x snake_game.py
-```
+### Method 1: Using pip (Recommended)
 
-## How to Play
-
-You can run the game in any of these ways:
-
-1. Using Python 3 explicitly:
+1. Install the package:
    ```bash
+   pip install terminal-snake-game
+   ```
+
+2. Run the game:
+   ```bash
+   # Either use the command-line tool
+   snake-game
+
+   # Or run as a Python module
+   python3 -m snake_game
+   ```
+
+### Method 2: From Source
+
+1. Clone the repository:
+   ```bash
+   git clone git@github.com:SwetaTanwar/snake-game.git
+   cd snake-game
+   ```
+
+2. Run the game:
+   ```bash
+   # Using Python directly
    python3 snake_game.py
    ```
 
-2. If the file is executable (after running chmod):
+   Or make it executable first:
    ```bash
+   # Make the script executable
+   chmod +x snake_game.py
+   
+   # Then run directly
    ./snake_game.py
    ```
+
+## How to Play
 
 ### Controls
 - Use arrow keys (↑ ↓ ← →) to control the snake
