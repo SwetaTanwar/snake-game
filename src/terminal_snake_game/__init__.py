@@ -5,6 +5,9 @@ import random
 import time
 import os
 
+# Export all necessary components
+__all__ = ['Snake', 'Food', 'Game', 'display_score', 'display_game_over', 'display_welcome_screen', 'get_high_score', 'set_high_score', 'main']
+
 class Snake:
     def __init__(self, start_y, start_x, window):
         self.body = [
@@ -39,13 +42,7 @@ class Snake:
     
     def move(self, direction):
         # Update direction if it's valid (can't go directly opposite)
-        if direction == curses.KEY_DOWN and self.direction != curses.KEY_UP:
-            self.direction = direction
-        elif direction == curses.KEY_UP and self.direction != curses.KEY_DOWN:
-            self.direction = direction
-        elif direction == curses.KEY_LEFT and self.direction != curses.KEY_RIGHT:
-            self.direction = direction
-        elif direction == curses.KEY_RIGHT and self.direction != curses.KEY_LEFT:
+        if self.is_valid_direction(direction):
             self.direction = direction
         
         # Get current head position
@@ -98,6 +95,18 @@ class Snake:
         if self.body[0] == food:
             return True
         return False
+
+    def is_valid_direction(self, direction):
+        """Check if a direction is valid (not opposite to current direction)"""
+        if direction == curses.KEY_DOWN and self.direction == curses.KEY_UP:
+            return False
+        if direction == curses.KEY_UP and self.direction == curses.KEY_DOWN:
+            return False
+        if direction == curses.KEY_LEFT and self.direction == curses.KEY_RIGHT:
+            return False
+        if direction == curses.KEY_RIGHT and self.direction == curses.KEY_LEFT:
+            return False
+        return True
 
 class Food:
     def __init__(self, window, sh, sw):
@@ -353,6 +362,16 @@ def main():
         game_window.attrset(curses.color_pair(5))
 
         while True:  # Main game session loop
+            # Clear all windows at the start of each game
+            screen.clear()
+            screen.refresh()
+            score_window.clear()
+            score_window.refresh()
+            game_window.clear()
+            game_window.refresh()
+            control_window.clear()
+            control_window.refresh()
+            
             # Show welcome screen first
             game_window.timeout(-1)  # Wait indefinitely for input on welcome screen
             display_welcome_screen(game_window)
@@ -365,10 +384,14 @@ def main():
             food = Food(game_window, game_height-1, sw-1)
             
             # Draw initial game state
+            game_window.clear()
+            game_window.border()
             snake.draw()
             food.draw()
             display_score(score_window, control_window, 0)
             game_window.refresh()
+            score_window.refresh()
+            control_window.refresh()
             
             # Initialize key variable with default direction
             key = curses.KEY_RIGHT
@@ -385,6 +408,9 @@ def main():
                 # Check for restart or quit
                 if key == ord('q'):
                     return  # Exit the entire game
+                
+                # Clear the game window while preserving the border
+                game_window.border()
                 
                 # Move snake
                 snake.move(key)
@@ -416,13 +442,12 @@ def main():
                 food.draw()
                 
                 # Make sure border is intact
-                game_window.border(curses.ACS_VLINE, curses.ACS_VLINE, 
-                                curses.ACS_HLINE, curses.ACS_HLINE, 
-                                curses.ACS_ULCORNER, curses.ACS_URCORNER, 
-                                curses.ACS_LLCORNER, curses.ACS_LRCORNER)
+                game_window.border()
                 
-                # Refresh the game window
+                # Refresh all windows in the correct order
                 game_window.refresh()
+                score_window.refresh()
+                control_window.refresh()
     finally:
         # Clean up curses
         curses.nocbreak()

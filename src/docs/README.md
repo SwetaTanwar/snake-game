@@ -77,3 +77,47 @@ There are two ways to install and run the game:
 - ★ Food
 - Score and high score display at the top
 - Control instructions at the bottom 
+
+## Development and Testing
+
+### Setting up Development Environment
+
+1. Create a virtual environment:
+   ```bash
+   python -m venv test_env
+   source test_env/bin/activate  # On Unix/macOS
+   # or
+   test_env\Scripts\activate  # On Windows
+   ```
+
+2. Install development dependencies:
+   ```bash
+   pip install -e ".[test]"
+   ```
+
+### Running Tests
+
+The game includes a comprehensive test suite that verifies core functionality. To run the tests:
+
+```bash
+# Run all tests
+python -m pytest src/tests/
+
+# Run tests with verbose output
+python -m pytest src/tests/ -v
+
+# Run tests with coverage report
+python -m pytest src/tests/ --cov=terminal_snake_game
+```
+
+The test suite covers:
+- Snake movement and collision detection
+- Food generation and placement
+- Score tracking
+- Window management and display
+- Game mechanics validation
+
+When contributing new features, please ensure to:
+1. Add appropriate test cases
+2. Run the full test suite before submitting changes
+3. Maintain or improve the current test coverage 
