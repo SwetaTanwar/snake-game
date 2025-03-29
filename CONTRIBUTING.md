@@ -39,6 +39,8 @@ Thank you for your interest in contributing to the Terminal Snake Game! This doc
    - Ensure the game works in different terminal sizes (minimum 80x24 characters)
    - Check that high scores are saved correctly
    - Verify that all controls work as expected
+   - Test on different operating systems if possible (Unix/macOS/Windows)
+   - Check that the game exits cleanly without errors
 
 ## Building and Testing the Package
 
@@ -107,6 +109,8 @@ Thank you for your interest in contributing to the Terminal Snake Game! This doc
    - Click "New Pull Request"
    - Select your fork and branch
    - Fill in the PR template with details about your changes
+   - Include screenshots or GIFs if you made UI changes
+   - Reference any related issues
 
 ## Publishing to PyPI (for maintainers)
 
@@ -118,6 +122,10 @@ Thank you for your interest in contributing to the Terminal Snake Game! This doc
        ...
    )
    ```
+   Follow semantic versioning:
+   - MAJOR version (X) for incompatible API changes
+   - MINOR version (Y) for new features in a backward compatible manner
+   - PATCH version (Z) for backward compatible bug fixes
 
 2. Commit version bump:
    ```bash
@@ -147,6 +155,7 @@ Thank you for your interest in contributing to the Terminal Snake Game! This doc
    python3 -m twine upload dist/*
    # Enter your PyPI username and password/token when prompted
    ```
+   Note: For security, use an API token instead of your password. You can create one at https://pypi.org/manage/account/token/
 
 5. Clean up build environment:
    ```bash
@@ -163,6 +172,8 @@ Thank you for your interest in contributing to the Terminal Snake Game! This doc
      pip install terminal-snake-game
      snake-game  # Test in a terminal of at least 80x24 characters
      ```
+   - Verify that the README and demo are displayed correctly on PyPI
+   - Check that all package metadata is correct
 
 ## Code Style Guidelines
 
@@ -172,6 +183,9 @@ Thank you for your interest in contributing to the Terminal Snake Game! This doc
 - Keep functions focused and modular
 - Update documentation for new features
 - Ensure README.md is up to date with any new features or changes
+- Add docstrings for new functions and classes
+- Keep line length under 100 characters
+- Use type hints where appropriate
 
 ## Need Help?
 
@@ -179,5 +193,6 @@ If you need help with any part of the contribution process:
 1. Check existing issues and pull requests
 2. Create a new issue with the "question" label
 3. Reach out to the maintainers
+4. Check the [Python Packaging User Guide](https://packaging.python.org/) for packaging help
 
 Thank you for contributing to make the Terminal Snake Game better! 🐍 
