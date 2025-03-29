@@ -22,9 +22,10 @@ wheels/
 
 # Virtual Environment
 venv/
-ENV/
 env/
-.env/
+ENV/
+build_env/
+test_env/
 
 # IDE
 .idea/
