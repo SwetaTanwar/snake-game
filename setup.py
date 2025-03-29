@@ -1,34 +1,40 @@
 from setuptools import setup, find_packages
 
-with open("README.md", "r", encoding="utf-8") as fh:
+with open("src/docs/README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
-    name="terminal-snake-game",
+    name="terminal_snake_game",
     version="1.0.3",
     author="Sweta Tanwar",
     author_email="shweta_tanwar@ymail.com",
-    description="A colorful terminal-based Snake game with score tracking",
+    description="A classic Snake game implementation in Python using curses",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/SwetaTanwar/snake-game",
-    packages=find_packages(),
+    packages=find_packages(where="src"),
+    package_dir={"": "src"},
+    package_data={
+        'terminal_snake_game': ['assets/*'],
+    },
     classifiers=[
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
-        "Environment :: Console",
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: End Users/Desktop",
         "Topic :: Games/Entertainment :: Arcade",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Operating System :: OS Independent",
     ],
-    python_requires=">=3.6",
+    python_requires=">=3.8",
     entry_points={
         "console_scripts": [
-            "snake-game=snake_game:main",
+            "terminal_snake_game=terminal_snake_game:main",
         ],
     },
-    py_modules=["snake_game"],
-    install_requires=[
-        "windows-curses;platform_system=='Windows'"
-    ],
-    include_package_data=True,
 ) 
