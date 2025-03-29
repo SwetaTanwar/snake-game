@@ -4,7 +4,7 @@ A classic Snake game implemented in Python using the curses library. This termin
 
 ## Demo
 
-![Snake Game Demo](demo/snake-game-demo.gif)
+![Snake Game Demo](https://raw.githubusercontent.com/SwetaTanwar/snake-game/main/demo/snake-game-demo.gif)
 
 ## Features
 
